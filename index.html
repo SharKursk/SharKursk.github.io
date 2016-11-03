@@ -7,27 +7,37 @@
 <b>
 
 
-<table width="90%" border=0 align="center" class="td_border">
-<tr>
-<td bgcolor='#2275AD'><p align="center" class="title">Для отправки сообщения автору сайта используйте следующую форму:</td>
-</tr>
-<tr align="center" valign="top">
-<tr>
-<td bgcolor='#F6F6F6'>
-<form action='mail2.php' method='POST' name='form' target='_blank'>
-<p style='font-family: Verdana; font-size: 8pt; color: #000000; font-weight: bold;'>Ваше имя:<br>
-<input name='name' type='text' size='30'></p>
-<p style='font-family: Verdana; font-size: 8pt; color: #000000; font-weight: bold;'>Ваш e-mail:<br>
-<input name='email' type='text' size='30'></p>
-<p style='font-family: Verdana; font-size: 8pt; color: #000000; font-weight: bold;'>Ваше сообщение:<br>
-<textarea name='mess' rows='5' cols='50'></textarea>
-<p><input name='submit' type='submit' style='font-family: Verdana; font-size: 8pt; color: #ffffff; background-color: #6699cc; font-weight: bold;' value='Отправить сообщение'>
-
-<input name='Reset' type='reset' style='font-family: Verdana; font-size: 8pt; color: #ffffff; background-color: #6699cc; font-weight: bold;' value='Очистить форму'></p>
-</form>
-</td>
-</tr>
-</table>
+<HTML>
+<FORM ID = "myform" METHOD=POST ACTION="" ENCTYPE="text/plain" style="background:'e0e0e0'">
+Кому:
+<INPUT NAME = "email_to" TYPE = "text" VALUE = "">
+<P>
+От кого:
+<INPUT NAME="email_from" TYPE = "text" VALUE = "">
+<P>
+Сообщение:<BR>
+< TEXTAREA NAME = "Сообщение" TYPE = "text" VALUE = "">< /TEXTAREA>
+<P>
+<! Кнопка типа Submit >
+<INPUT NAME = "Отправить" TYPE = "submit" VALUE = "Отправить">
+</FORM>
+<SCRIPT>
+function myform.onsubmit(){
+var noemail = myform.email_to.value.indexOf('@') == - 1  /* присваиваем  
+                                                      значение равенства */
+var notext = !myform.Сообщение.value
+var xtext = "\nПисьмо не отправлено"
+if (noemail || notext){
+   event.returnValue = false                     // отменить отправку
+   if (noemail)
+      alert("Неправильный адрес получателя" + xtext)
+   else
+      alert("Нет текста сообщения" + xtext)
+} else
+   myform.action = "mailto:" + myform.email_to.value // значение ACTION
+}
+</SCRIPT>
+</HTML>
 
 
 
